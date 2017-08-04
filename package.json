@@ -1,0 +1,26 @@
+{
+  "name": "weather-history",
+  "version": "1.0.0",
+  "description": "",
+  "main": "weather",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TinaYTZ/R_prediction.git"
+  },
+  "author": "Yuting Zhang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TinaYTZ/R_prediction/issues"
+  },
+  "homepage": "https://github.com/TinaYTZ/R_prediction#readme",
+  "dependencies": {
+    "@google-cloud/bigquery": "^0.9.6",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "googleapis": "^20.1.0",
+    "http": "0.0.0"
+  }
+}
