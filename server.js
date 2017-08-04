@@ -7,6 +7,10 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('./public/'));
 
+http.createServer(app).listen(process.env.PORT ||8080);
+console.log('server running...');
+
+
 exports.helloworld= function (req,res){
   res.send('helloworld');
 
@@ -58,7 +62,7 @@ bigquery
   .query(options)
   .then((results) => {
     const rows = results[0];
-    console.log(rows);
+    res.send(rows);
   })
   .catch((err) => {
     console.error('ERROR:', err);
