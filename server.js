@@ -7,7 +7,7 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('./public/'));
 
-http.createServer(app).listen(process.env.PORT ||8080);
+server.listen(process.env.PORT ||8080);
 console.log('server running...');
 
 
