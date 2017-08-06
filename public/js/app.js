@@ -7,9 +7,7 @@ getLocation();
 
 
 $(document).on('click','.btn',function(e){
-        console.log("click");
         var id=$(this).attr('id');
-        console.log("id"+id);
         query(id);
 });  
 
@@ -56,12 +54,10 @@ function showError(error) {
                 $('.query').html('');
                 $('.query').append('<table id="tb1" class="table table-condensed" ></table>');
                 $('#tb1').append("<tr><th>Date</th><th>prcp</th><th>Temperature max</th><th>Temperature min</th></tr>");
+                if (data.length ==0){  $('.query').append("Query returned zero record");}
                 for(var i = data.length - 1; i >= 0; i--) {
                      $('#tb1').append('<tr><td>'+data[i].date+'</td><td>'+data[i].prcp+'</td><td>'+data[i].tmax+'</td><td>'+data[i].tmin+'</td></tr>');
                 }
-                console.log(data);
-
-
                }
            });
 
@@ -79,8 +75,6 @@ function showError(error) {
                 for(var i = data.length - 1; i >= 0; i--) {
                      $('#tb2').append('<tr><td>'+data[i].name+'</td><td>'+data[i].state+'</td><td>'+data[i].latitude+'</td><td>'+data[i].longitude+'</td><td><button type="button" class="btn" id="'+data[i].id+'">check it</button></td> </tr>');
                 }
-                console.log(data);
-
 
                }
            });
