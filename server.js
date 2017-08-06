@@ -39,7 +39,7 @@ FROM (
   FROM
     [bigquery-public-data:ghcn_d.ghcnd_2017] AS wx
   WHERE
-    id = `+locID+`
+    id = '`+locID+`'
     AND DATEDIFF(CURRENT_DATE(), date) < 15
     )
 GROUP BY
