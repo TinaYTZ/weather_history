@@ -13,15 +13,24 @@
 
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2 class="section-heading" id="img-list-title">Past weeks weather</h2>
+                    <h2 class="section-heading" id="img-list-title">Past 2 weeks weather</h2>
+                    <hr>
+                     <div class="row"><input id='address' type="text" class='col-lg-4 col-lg-4 col-lg-offset-4 center text-muted' name='address' placeholder="Enter ZipCode or address">  </input>
+                     </div>
+                     <p></p>
+                    <div class="row">
+                      <button class='btn btn-default btn-xl sr-button' id='search'>Submit
+                      </button>
+                      <button class='btn btn-default btn-xl sr-button'  id ="getLocation">Locate me</button>
+                      <p></p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
   </div>
   <div class="container">
-   <p>Click the button to get your coordinates.</p>
-   <button id ="getLocation">Try It</button>
    <p id="demo"></p>
    Location:
    <div class="city">

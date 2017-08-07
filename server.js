@@ -3,6 +3,8 @@ var express=require('express'),
     app = express(),
     server= require('http').createServer(app);
 var bodyParser = require('body-parser');
+var request = require('request');
+
 app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 app.use(express.static('./public/'));
@@ -18,6 +20,20 @@ const BigQuery = require('@google-cloud/bigquery');
 
 app.get('/', function(req,res){
     res.sendFile('/index.html'); 
+
+});
+
+app.post('/googleAPI', function(req,res){
+request.get(
+    'https://maps.googleapis.com/maps/api/geocode/json?address="'+req.body.address+'"&key=AIzaSyBX14FXuFgAWqgCzJOSI5doaEAjCYI9h6M',
+    function (error, response, body) {
+        if (!error ) {
+          var obj = JSON.parse(body);
+          if (obj.status=='OK') {
+          res.json({"status":"obj.status", "latitude":obj['results'][0]['geometry']['location'].lat,"longitude":obj['results'][0]['geometry']['location'].lng});}
+    }
+  });
+
 
 });
 

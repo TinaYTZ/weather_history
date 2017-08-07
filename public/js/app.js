@@ -5,14 +5,36 @@ $('#getLocation').click(function(){
 getLocation();
 });
 
+$('#search').click(function(){
+var addr=$("#address").val();
+getLocation_addr(addr);
+});
 
 $(document).on('click','.btn',function(e){
         var id=$(this).attr('id');
         query(id);
 });  
 
+function getLocation_addr( addr){
+    $("#address").val('');
+  $.ajax({
+                type: 'Post',
+                url:'/googleAPI',
+                data: JSON.stringify({"address":addr}), 
+                contentType:"application/json",
+               success: function(data) {
+                $('#address').html('');
+                showPosition_addr(data.latitude, data.longitude);
+               }
+           });
+}
 
-
+function showPosition_addr(latitude,longitude) {
+    x.innerHTML = "Latitude: " + latitude + 
+    "<br>Longitude: " + longitude;
+    locationID(latitude,longitude);
+    //query(position.coords.latitude,position.coords.longitude);
+}
 function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition, showError);
@@ -27,6 +49,9 @@ function showPosition(position) {
     locationID(position.coords.latitude,position.coords.longitude);
     //query(position.coords.latitude,position.coords.longitude);
 }
+
+
+
 
 function showError(error) {
     switch(error.code) {
@@ -62,6 +87,7 @@ function showError(error) {
            });
 
  }
+
  function locationID(lat, long){
   $.ajax({
                 type: 'Post',
@@ -80,6 +106,5 @@ function showError(error) {
            });
 
 
-
- }
+}
 
